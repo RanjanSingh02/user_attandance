@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $message = "Leave request submitted successfully!";
 }
 ?>
-
+<!-- Ranjan -->
 <div class="container">
     <h1>Apply for Leave</h1>
     <?php if (isset($message)) echo "<p class='alert alert-success'>$message</p>"; ?>

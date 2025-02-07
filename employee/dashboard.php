@@ -1,17 +1,24 @@
 <?php
+session_start(); // Ensure session starts before any output
+
 include('../includes/config.php');
 include('../includes/header.php');
-session_start();
-if ($_SESSION['role'] !== 'employee') {
+
+// Check if the session variable is set
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'employee') {
     header('Location: ../index.php');
     exit;
 }
+
+// Check if 'name' is set, else provide a default value
+$name = isset($_SESSION['name']) ? $_SESSION['name'] : 'Guest';
+
 ?>
 
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1>Welcome, <?= $_SESSION['name']; ?>!</h1>
+            <h1>Welcome, <?= htmlspecialchars($name); ?>!</h1>
         </div>
     </div>
     <div class="row mt-4">
